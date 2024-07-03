@@ -33,12 +33,15 @@ class EditPostFragment : Fragment() {
     private lateinit var  locationTextView: TextView
     private lateinit var imageUrlRef : String
     private var imageUri: Uri? = null
+    private lateinit var updatedImage: String
     private val imagePicker =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
                 imageUri = it
                 //upload the image to Firebase Storage
                 imageView.setImageURI(imageUri)
+                updatedImage = imageUri.toString()
+
                 uploadImage()
             }
         }
@@ -97,7 +100,7 @@ class EditPostFragment : Fragment() {
             }else{
                 newLocation = locationTextView.text.toString()
             }
-            val editedPost = PostEntity(post.id, imageUrlRef , priceTextView.text.toString(), aboutTextView.text.toString(),
+            val editedPost = PostEntity(post.id, updatedImage , priceTextView.text.toString(), aboutTextView.text.toString(),
                 phoneNumberTextView.text.toString(), newLocation, ownerTextView.text.toString(), post.uid)
             editPostViewModel.editPost(editedPost) { isSuccessful ->
                 if (isSuccessful) {

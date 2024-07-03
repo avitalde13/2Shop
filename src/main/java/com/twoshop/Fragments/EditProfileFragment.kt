@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.bumptech.glide.Glide
+
 import com.twoshop.Model.Entities.UserEntity
 import com.twoshop.R
 import com.twoshop.ViewModel.EditProfileViewModel
@@ -36,6 +37,8 @@ class EditProfileFragment: Fragment() {
     private lateinit var  PasswordTextView: TextView
     private lateinit var  ConfirmPasswordTextView: TextView
     private lateinit var imageUrlRef : String
+    private lateinit var imageRef: String
+
     private var imageUri: Uri? = null
     private val imagePicker =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -43,6 +46,8 @@ class EditProfileFragment: Fragment() {
                 imageUri = it
                 //upload the image to Firebase Storage
                 imageView.setImageURI(imageUri)
+                imageRef = imageUri.toString()
+
                   uploadImage()
             }
         }
@@ -112,10 +117,16 @@ class EditProfileFragment: Fragment() {
             val email = EmailTextView.text.toString()
             val password = PasswordTextView.text.toString()
             val confirmPassword = ConfirmPasswordTextView.text.toString()
-            val imageUrl = imageUrlRef
+            Log.d("imageUrlRef",imageUrlRef)
+            Log.d("user.profileImg", user.profileImg)
+            Log.d("imageRef", imageRef)
+            Log.d("imageUri", imageUri.toString())
+            val  updatedImage = imageUri.toString()
 
 
-            val newUser = UserEntity(user.uid,userName,imageUrl,email)
+
+
+            val newUser = UserEntity(user.uid,userName,updatedImage,email)
             if(!isValidEmail(email)){
                 // Email is not valid, show a Toast message and return
                 Toast.makeText(context, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
@@ -165,6 +176,7 @@ class EditProfileFragment: Fragment() {
                 storageReference.downloadUrl.addOnSuccessListener { downloadUri ->
                     val imageUrl = downloadUri.toString()
                     imageUrlRef= imageUrl
+                    Log.d("IMAGE", "Image URL: $imageUrl")
                     // Load the image into your ImageView using Glide
                 }.addOnFailureListener { e ->
                     // failed upload

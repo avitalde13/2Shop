@@ -26,7 +26,6 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
 
-
 class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var isPasswordVisible = false
@@ -43,6 +42,7 @@ class RegisterActivity : AppCompatActivity() {
                 //upload the image to Firebase Storage
                 imageView.setImageURI(imageUri)
                 uploadImage()
+
             }
         }
 
