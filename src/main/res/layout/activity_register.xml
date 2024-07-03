@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightYellow"
+    android:orientation="vertical">
+
+    <!-- Header with Logo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="243dp"
+            android:src="@drawable/logo" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/FloralWhite" />
+    </LinearLayout>
+
+    <!-- Profile Image Section -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <com.twoshop.components.PrimaryButton
+            android:id="@+id/register_profile_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_camera"
+            android:hint="Add Profile Picture"
+            android:textSize="10sp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="104dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp">
+
+            <!-- User Image -->
+            <ImageView
+                android:id="@+id/user_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/default_profile"
+                app:layout_constraintDimensionRatio="H, 1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" /> <!-- Add a default image if needed -->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+
+
+
+        <EditText
+            android:id="@+id/Email"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/ic_email"
+            android:hint="@string/register_label_email"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/raleway"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/User_Name"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/ic_name"
+        android:hint="@string/register_label_name"
+        android:textColor="@color/textColor"
+        android:fontFamily="@font/raleway"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <EditText
+                android:id="@+id/Password"
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_password"
+                android:hint="@string/register_label_password"
+                android:textColor="@color/textColor"
+                android:fontFamily="@font/raleway"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginStart="6dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/showPasswordButton"
+                android:inputType="textPassword" />
+
+            <ImageButton
+                android:id="@+id/showPasswordButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_horizontal"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/register_label_show_password"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_hide_password"
+                android:onClick="onShowPasswordClick"/>
+        </RelativeLayout>
+
+        <!-- Confirm Password -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp">
+
+            <EditText
+                android:id="@+id/Confirm_Password"
+                android:inputType="textPassword"
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_password"
+                android:hint="@string/register_label_confirm_password"
+                android:textColor="@color/textColor"
+                android:fontFamily="@font/raleway"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="-10dp" />
+
+            <ImageButton
+                android:id="@+id/showConfirmPasswordButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_horizontal"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/register_label_show_confirm_password"
+                android:padding="8dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_hide_password"
+                android:onClick="onShowConfirmPasswordClick"/>
+        </RelativeLayout>
+
+        <!-- Submit and Go Back Buttons -->
+        <com.twoshop.components.PrimaryButton
+            android:id="@+id/submit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_label_submit"
+            android:layout_margin="10dp"
+            android:layout_gravity="center" />
+
+    <com.twoshop.components.PrimaryButton
+        android:id="@+id/goBack_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_gravity="center"
+        android:text="@string/register_label_back" />
+    </LinearLayout>

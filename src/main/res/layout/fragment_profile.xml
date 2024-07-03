@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightYellow"
+    android:orientation="vertical">
+
+        <!-- Profile Picture ImageView -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="match_parent"
+            android:layout_height="378dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/profile_picture_description"
+            android:orientation="vertical"
+            android:scaleType="centerCrop" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:text="@string/profile_label_title"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/textColor">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:paddingHorizontal="20dp">
+
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="273dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/ic_name"
+            android:fontFamily="@font/raleway"
+            android:hint="@string/register_label_name"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/show_email"
+            android:layout_width="282dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="6dp"
+            android:drawableStart="@drawable/ic_email"
+            android:fontFamily="@font/raleway"
+            android:hint="@string/profile_label_email"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.twoshop.components.PrimaryButton
+            android:id="@+id/edit_profile_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="@string/edit_profile_btn" />
+    </LinearLayout>
+
+
+    <com.twoshop.components.PrimaryButton
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:text="@string/private_area_label_logout" />
+
+</LinearLayout>
+
